@@ -13,11 +13,11 @@ class Complex:
 
     def __mul__(self, other):
         if isinstance(other, Complex) is True:
-            return Complex(self.__reel * other.__reel, self.__imag * other.__imag)
+            return Complex(self.__reel * other.__reel - self.__imag * self.__imag, 2 * (self.__imag * other.__imag))
 
     def __truediv__(self, other):
         if isinstance(other, Complex) is True:
-            return Complex(self.__reel / other.__reel, self.__imag / other.__imag)
+            return Complex((self.__reel * other.__reel + self.__imag * other.__imag)/(other.__reel**2 - other.__imag**2), (self.__imag * other.__imag - self.__reel * other.__imag)/(other.__reel**2 - other.__imag**2))
 
     def __abs__(self):
         return (self.__reel**2+self.__imag**2)**0.5
@@ -45,4 +45,4 @@ if __name__ == '__main__':
     comp7 = comp3 == comp3
     comp8 = comp1 != comp4
     comp9 = abs(comp4)
-    print(comp8)
+    print(comp6)
