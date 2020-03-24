@@ -3,19 +3,20 @@ class Cercle:
         self.__rayon = r
 
     def __add__(self, other):
-        if isinstance(other, Cercle) == True:
+        if isinstance(other, Cercle) is True:
             return Cercle(self.__rayon + other.__rayon)
 
     def __lt__(self, other):
-        if isinstance(other, Cercle) == True:
+        if isinstance(other, Cercle) is True:
             return self.__rayon < other.__rayon
 
     def __gt__(self, other):
-        if isinstance(other, Cercle) == True:
+        if isinstance(other, Cercle) is True:
             return self.__rayon > other.__rayon
 
     def __str__(self):
         return "Rayon du cercle: r=" + str(self.__rayon)
+
 
 if __name__ == '__main__':
     c1 = Cercle(2)
