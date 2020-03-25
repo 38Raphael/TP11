@@ -5,41 +5,45 @@ class Duree:
         self.__seconde = s
 
     def affduree(self):
-        if self.__heure>= 0 and self.__minute >= 0 and self.__seconde >= 0:
-            if self.__heure < 24:
-                if self.__seconde < 60:
-                    if self.__minute < 60:
+        if self.__heure >= 0 and self.__minute >= 0 and self.__seconde >= 0:
+            if self.__seconde < 60:
+                if self.__minute < 60:
+                    if self.__heure < 24:
                         return str(self.__heure) + "h" + str(self.__minute) + "m" + str(self.__seconde) + "s"
                     else:
-                        self.__heure += 1
-                        self.__minute -= 60
+                        while self.__heure > 24:
+                            self.__heure -= 24
                         return str(self.__heure) + "h" + str(self.__minute) + "m" + str(self.__seconde) + "s"
                 else:
-                    self.__minute += 1
-                    self.__seconde -= 60
-                    if self.__minute < 60:
+                    while self.__minute > 60:
+                        self.__minute -= 60
+                        self.__heure += 1
+                    if self.__heure < 24:
                         return str(self.__heure) + "h" + str(self.__minute) + "m" + str(self.__seconde) + "s"
                     else:
-                        self.__heure += 1
-                        self.__minute -= 60
+                        while self.__heure > 24:
+                            self.__heure -= 24
                         return str(self.__heure) + "h" + str(self.__minute) + "m" + str(self.__seconde) + "s"
             else:
-                self.__heure -= 24
-                if self.__seconde < 60:
-                    if self.__minute < 60:
+                while self.__seconde > 60:
+                    self.__seconde -= 60
+                    self.__minute += 1
+                if self.__minute < 60:
+                    if self.__heure < 24:
                         return str(self.__heure) + "h" + str(self.__minute) + "m" + str(self.__seconde) + "s"
                     else:
-                        self.__heure += 1
-                        self.__minute -= 60
+                        while self.__heure > 24:
+                            self.__heure -= 24
                         return str(self.__heure) + "h" + str(self.__minute) + "m" + str(self.__seconde) + "s"
                 else:
-                    self.__minute += 1
-                    self.__seconde -= 60
-                    if self.__minute < 60:
+                    while self.__minute > 60:
+                        self.__minute -= 60
+                        self.__heure += 1
+                    if self.__heure < 24:
                         return str(self.__heure) + "h" + str(self.__minute) + "m" + str(self.__seconde) + "s"
                     else:
-                        self.__heure += 1
-                        self.__minute -= 60
+                        while self.__heure > 24:
+                            self.__heure -= 24
                         return str(self.__heure) + "h" + str(self.__minute) + "m" + str(self.__seconde) + "s"
         else:
             return "Choisissez une heure, des minutes et des secondes positives"
@@ -50,8 +54,8 @@ class Duree:
 
 
 if __name__ == '__main__':
-    h1 = Duree(25, 36, 74)
-    h2 = Duree(14, 82, 21)
+    h1 = Duree(25, 360, 74)
+    h2 = Duree(52, 82, 21)
     print(h1.affduree())
     print(h2.affduree())
     h3 = h1 + h2
