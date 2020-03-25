@@ -54,7 +54,7 @@ class Duree:
 
 
 if __name__ == '__main__':
-    h1 = Duree(25, 360, 74)
+    h1 = Duree(0, 360, 74)
     h2 = Duree(52, 82, 21)
     print(h1.affduree())
     print(h2.affduree())
